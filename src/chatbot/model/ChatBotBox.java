@@ -4,7 +4,13 @@ public class ChatBotBox
 {
 	private String name;
 	private int chatCounter;
+	//public int lengthCounter;
 	
+	
+	/**
+	 * Creates a Chatbox object with the supplied name and initializes the current number of chats to zero.
+	 * @param name The supplied name for the Chatbot.
+	 */
 	public ChatBotBox(String name)
 	{
 		this.name = name;
@@ -30,4 +36,21 @@ public class ChatBotBox
 	{
 		chatCounter++;
 	}
+	
+	public boolean quitChecker(String input)
+	{
+		boolean okToExit = false;
+		
+		if (input.equalsIgnoreCase(".exit"))
+		{
+			okToExit = true;
+		}
+		
+		return okToExit;
+	}
+	
+	//public int lengthCounter()
+	//{
+	//	return lengthCounter;
+	//}
 }
