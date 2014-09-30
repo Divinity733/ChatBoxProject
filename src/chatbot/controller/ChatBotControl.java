@@ -36,10 +36,13 @@ public class ChatBotControl
 	{
 		String result = appView.showChatBotBox("blah");
 		
-		if (mySillyChatBotBox.quitChecker(result))
+		
+		while(!mySillyChatBotBox.quitChecker(result))
 		{
-			quit();
+			result = appView.showChatBotBox(result);
 		}
+		
+		quit();
 	}
 	
 	/**
