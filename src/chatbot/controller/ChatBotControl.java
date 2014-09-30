@@ -36,7 +36,14 @@ public class ChatBotControl
 	{
 		String result = appView.showChatBotBox("blah");
 		
-		
+		/**
+		 * Allows Chat to appear.
+		 * 
+		 * @param if --> while
+		 *            changed so we can mess with checkers.
+		 * @version 1.2 9/26/2014
+		 * @author Brennan Litster
+		 */
 		while(!mySillyChatBotBox.quitChecker(result))
 		{
 			result = appView.showChatBotBox(result);
