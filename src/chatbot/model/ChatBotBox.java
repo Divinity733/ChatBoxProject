@@ -24,6 +24,20 @@ public class ChatBotBox
 	}
 	
 	/**
+	 * Process input from user against all checkers.
+	 * 
+	 * @param currentInput
+	 *            The supplied text.
+	 * @return
+	 */
+	public String processText(String currentInput)
+	{
+		String result = "";
+		
+		return result;
+	}
+	
+	/**
 	 * Get's the name.
 	 * 
 	 * @param name
@@ -87,7 +101,18 @@ public class ChatBotBox
 	{
 		boolean okToExit = false;
 		
-		if (input.equalsIgnoreCase(".exit"))
+		if (input != null && input.equalsIgnoreCase(".exit"))
+		{
+			okToExit = true;
+		}
+		
+		String Str1 = new String(input);
+		
+		System.out.print("String Length: ");
+		
+		System.out.println(Str1.length());
+		
+		if (input.length() > 5)
 		{
 			okToExit = true;
 		}
