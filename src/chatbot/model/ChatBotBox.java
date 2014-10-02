@@ -19,22 +19,10 @@ public class ChatBotBox
 	 */
 	public ChatBotBox(String name)
 	{
+		memeList = new ArrayList<String>();
 		this.name = name;
 		chatCounter = 0;
-	}
-	
-	/**
-	 * Process input from user against all checkers.
-	 * 
-	 * @param currentInput
-	 *            The supplied text.
-	 * @return
-	 */
-	public String processText(String currentInput)
-	{
-		String result = "";
-		
-		return result;
+		fillTheMeme();
 	}
 	
 	/**
@@ -76,6 +64,39 @@ public class ChatBotBox
 		this.name = name;
 	}
 	
+	private void fillTheMeme()
+	{
+		memeList.add("toddler fist");
+		memeList.add("doge");
+		memeList.add("Shut up and take my money");
+		memeList.add("newb");
+		memeList.add("yolo");
+		memeList.add("keep calm");
+	}
+	
+	/**
+	 * Process input from user against all checkers.
+	 * 
+	 * @param currentInput
+	 *            The supplied text.
+	 * @return
+	 */
+	public String processText(String currentInput)
+	{
+		String result = "";
+		
+		if (memeCheck(currentInput))
+		{
+			result = "Wow, " + currentInput + " is a meme. Yay!";
+		}
+		else
+		{
+			result = "not a meme, try later!";
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * The chat counter counts up.
 	 * 
@@ -87,6 +108,29 @@ public class ChatBotBox
 	private void updateChatCounter()
 	{
 		chatCounter++;
+	}
+	
+	private boolean memeCheck(String input)
+	{
+		boolean isMeme = false;
+		
+		for (String currentMeme : memeList)
+		{
+			if (input.equalsIgnoreCase(currentMeme))
+			{
+				isMeme = true;
+			}
+		}
+		
+		for (int loopCount = 0; loopCount < memeList.size(); loopCount++)
+		{
+			if (input.equalsIgnoreCase(memeList.get(loopCount)))
+			{
+				isMeme = true;
+			}
+		}
+		
+		return isMeme;
 	}
 	
 	/**
