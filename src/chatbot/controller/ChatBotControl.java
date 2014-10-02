@@ -5,10 +5,18 @@ import javax.swing.JOptionPane;
 import chatbot.model.ChatBotBox;
 import chatbot.view.ChatboxView;
 
+/**
+ * Runs the ChatBot
+ * 
+ * @version 1.3 10/2/2014
+ * @author Brennan Litster
+ */
 public class ChatBotControl
 {
 	private ChatboxView appView;
 	private ChatBotBox mySillyChatBotBox;
+	private String startMess;
+	private String cleanMess;
 	
 	/**
 	 * Allows control to Chat.
@@ -22,6 +30,21 @@ public class ChatBotControl
 	{
 		appView = new ChatboxView(this);
 		mySillyChatBotBox = new ChatBotBox("blah");
+		startMess = "Welcome to the " + mySillyChatBotBox.getName() + " chat.  What is your name?";
+		cleanMess = "goodbye you evil user :'(";
+	}
+	
+	/**
+	 * Shows a String from the Chatbot as a popup
+	 * 
+	 * @param ChatBoxBot
+	 *            The string from the Chatbot.
+	 * @version 1.3 10/2/2014
+	 * @author Brennan Litster
+	 */
+	public ChatBotBox getMySillyChatBotBox()
+	{
+		return mySillyChatBotBox;
 	}
 	
 	/**
@@ -39,12 +62,11 @@ public class ChatBotControl
 		/**
 		 * Allows Chat to appear.
 		 * 
-		 * @param if --> while
-		 *            changed so we can mess with checkers.
+		 * @param if --> while changed so we can mess with checkers.
 		 * @version 1.2 9/26/2014
 		 * @author Brennan Litster
 		 */
-		while(!mySillyChatBotBox.quitChecker(result))
+		while (!mySillyChatBotBox.quitChecker(result))
 		{
 			result = appView.showChatBotBox(result);
 		}
@@ -62,7 +84,7 @@ public class ChatBotControl
 	 */
 	private void quit()
 	{
-		JOptionPane.showMessageDialog(null, "good bye cruel world");
+		appView.showChatBoxBot(cleanMess);
 		System.exit(0);
 	}
 }

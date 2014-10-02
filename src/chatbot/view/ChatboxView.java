@@ -4,6 +4,14 @@ import javax.swing.JOptionPane;
 
 import chatbot.controller.ChatBotControl;
 
+/**
+ * Shows a String from the Chatbot as a popup
+ * 
+ * @param currentInput
+ *            The string from the Chatbot.
+ * @version 1.3 10/2/2014
+ * @author Brennan Litster
+ */
 public class ChatboxView
 {
 	
@@ -34,8 +42,21 @@ public class ChatboxView
 	{
 		String result = "";
 		
-		JOptionPane.showMessageDialog(null, "Hello, " + currentInput);
-		result = JOptionPane.showInputDialog(null, "are you done?");
+		result = JOptionPane.showInputDialog(null, baseControl.getMySillyChatBotBox() + " says: " + currentInput);
+		
 		return result;
+	}
+	
+	/**
+	 * Shows a String from the Chatbot as a popup.
+	 * 
+	 * @param currentInput
+	 *            The string from the Chatbot.
+	 * @version 1.3 10/2/2014
+	 * @author Brennan Litster
+	 */
+	public void showChatBoxBot(String currentInput)
+	{
+		JOptionPane.showMessageDialog(null, currentInput);
 	}
 }

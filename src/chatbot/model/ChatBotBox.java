@@ -106,6 +106,14 @@ public class ChatBotBox
 			okToExit = true;
 		}
 		
+		/**
+		 * Shows a String from the Chatbot as a popup
+		 * 
+		 * @param currentInput
+		 *            The string from the Chatbot.
+		 * @version 1.2 9/30/2014
+		 * @author Brennan Litster
+		 */
 		String Str1 = new String(input);
 		
 		System.out.print("String Length: ");
