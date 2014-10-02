@@ -42,7 +42,7 @@ public class ChatboxView
 	{
 		String result = "";
 		
-		result = JOptionPane.showInputDialog(null, baseControl.getMySillyChatBotBox() + " says: " + currentInput);
+		result = JOptionPane.showInputDialog(null, baseControl.getMySillyChatBotBox().getName() + " says: " + currentInput);
 		
 		return result;
 	}

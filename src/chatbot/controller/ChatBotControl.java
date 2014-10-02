@@ -57,7 +57,7 @@ public class ChatBotControl
 	 */
 	public void start()
 	{
-		String result = appView.showChatBotBox("blah");
+		String result = appView.showChatBotBox(startMess);
 		
 		/**
 		 * Allows Chat to appear.
@@ -68,6 +68,7 @@ public class ChatBotControl
 		 */
 		while (!mySillyChatBotBox.quitChecker(result))
 		{
+			result = mySillyChatBotBox.processText(result);
 			result = appView.showChatBotBox(result);
 		}
 		
