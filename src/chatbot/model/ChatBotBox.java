@@ -85,16 +85,93 @@ public class ChatBotBox
 	{
 		String result = "";
 		
-		if (memeCheck(currentInput))
+		int randomPosition = (int) (Math.random() * 3);
+		if (currentInput != null)
 		{
-			result = "Wow, " + currentInput + " is a meme. Yay!";
+			if (randomPosition == 0)
+			{
+				if (stringLengthChecker(currentInput))
+				{
+					result = "too long";
+				}
+				else
+				{
+					result = "shorty!";
+				}
+			}
+			else if (randomPosition == 1)
+			{
+				if (contentChecker(currentInput))
+				{
+					result = "Found it!";
+				}
+				else
+				{
+					result = "Error404...";
+				}
+			}
+			else
+			{
+				if (memeCheck(currentInput))
+				{
+					result = "Wow, " + currentInput + " is a meme. Yay!";
+				}
+				else
+				{
+					result = "not a meme, try later!";
+				}
+			}
 		}
 		else
 		{
-			result = "not a meme, try later!";
+			result = "use real words!!!!";
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * Shows the content from the Chatbot as a popup
+	 * 
+	 * @param currentInput
+	 *            The content from the Chatbot.
+	 * @version 1.3 10/9/2014
+	 * @author Brennan Litster
+	 */
+	private boolean contentChecker(String currentInput)
+	{
+		boolean containsMedia = false;
+		
+		if(currentInput.equalsIgnoreCase("Video Games") || currentInput.equalsIgnoreCase("Movies") || currentInput.equalsIgnoreCase("News"))
+		{
+			
+		}
+		
+		return containsMedia;
+	}
+	
+	/**
+	 * Shows a String from the Chatbot as a popup
+	 * 
+	 * @param currentInput
+	 *            The string from the Chatbot.
+	 * @version 1.3 10/9/2014
+	 * @author Brennan Litster
+	 */
+	private boolean stringLengthChecker(String currentInput)
+	{
+		boolean isLong = false;
+		
+		String Str1 = new String(currentInput);
+		System.out.print("String Length: ");
+		System.out.println(Str1.length());
+		
+		if (currentInput.length() >= 20)
+		{
+			isLong = true;
+		}
+		
+		return isLong;
 	}
 	
 	/**
@@ -122,14 +199,6 @@ public class ChatBotBox
 			}
 		}
 		
-		for (int loopCount = 0; loopCount < memeList.size(); loopCount++)
-		{
-			if (input.equalsIgnoreCase(memeList.get(loopCount)))
-			{
-				isMeme = true;
-			}
-		}
-		
 		return isMeme;
 	}
 	
@@ -146,25 +215,6 @@ public class ChatBotBox
 		boolean okToExit = false;
 		
 		if (input != null && input.equalsIgnoreCase(".exit"))
-		{
-			okToExit = true;
-		}
-		
-		/**
-		 * Shows a String from the Chatbot as a popup
-		 * 
-		 * @param currentInput
-		 *            The string from the Chatbot.
-		 * @version 1.2 9/30/2014
-		 * @author Brennan Litster
-		 */
-		String Str1 = new String(input);
-		
-		System.out.print("String Length: ");
-		
-		System.out.println(Str1.length());
-		
-		if (input.length() > 5)
 		{
 			okToExit = true;
 		}
