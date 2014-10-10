@@ -144,7 +144,7 @@ public class ChatBotBox
 		
 		if(currentInput.equalsIgnoreCase("Video Games") || currentInput.equalsIgnoreCase("Movies") || currentInput.equalsIgnoreCase("News"))
 		{
-			
+			containsMedia = true;
 		}
 		
 		return containsMedia;
