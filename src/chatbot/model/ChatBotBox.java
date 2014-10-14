@@ -9,8 +9,7 @@ public class ChatBotBox
 	private int chatCounter;
 	
 	/**
-	 * Creates a Chatbox object with the supplied name and initializes the
-	 * current number of chats to zero.
+	 * Creates a Chatbox object with the supplied name and initializes the current number of chats to zero.
 	 * 
 	 * @param name
 	 *            The supplied name for the Chatbot.
@@ -96,6 +95,7 @@ public class ChatBotBox
 				}
 				else
 				{
+					memeList.add(currentInput);
 					result = "shorty!";
 				}
 			}
@@ -142,7 +142,7 @@ public class ChatBotBox
 	{
 		boolean containsMedia = false;
 		
-		if(currentInput.equalsIgnoreCase("Video Games") || currentInput.equalsIgnoreCase("Movies") || currentInput.equalsIgnoreCase("News"))
+		if (currentInput.equalsIgnoreCase("Video Games") || currentInput.equalsIgnoreCase("Movies") || currentInput.equalsIgnoreCase("News"))
 		{
 			containsMedia = true;
 		}
