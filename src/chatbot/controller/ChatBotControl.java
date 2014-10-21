@@ -3,6 +3,7 @@ package chatbot.controller;
 import javax.swing.JOptionPane;
 
 import chatbot.model.ChatBotBox;
+import chatbot.view.ChatbotFrame;
 import chatbot.view.ChatboxView;
 
 /**
@@ -17,6 +18,7 @@ public class ChatBotControl
 	private ChatBotBox mySillyChatBotBox;
 	private String startMess;
 	private String cleanMess;
+	private ChatbotFrame appFrame;
 	
 	/**
 	 * Allows control to Chat.
@@ -29,6 +31,7 @@ public class ChatBotControl
 	public ChatBotControl()
 	{
 		appView = new ChatboxView(this);
+		appFrame = new ChatbotFrame(this);
 		mySillyChatBotBox = new ChatBotBox("blah");
 		startMess = "Welcome to the " + mySillyChatBotBox.getName() + " chat.  What is your name?";
 		cleanMess = "goodbye you evil user :'(";
