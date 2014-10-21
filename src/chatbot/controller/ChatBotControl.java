@@ -69,13 +69,13 @@ public class ChatBotControl
 		 * @version 1.2 9/26/2014
 		 * @author Brennan Litster
 		 */
-		//while (!mySillyChatBotBox.quitChecker(result))
-		//{
-			//result = mySillyChatBotBox.processText(result);
-			//result = appView.showChatBotBox(result);
-		//}
+		while (!mySillyChatBotBox.quitChecker(result))
+		{
+			result = mySillyChatBotBox.processText(result);
+			result = appView.showChatBotBox(result);
+		}
 		
-		//quit();
+		quit();
 	}
 	
 	/**
@@ -86,9 +86,8 @@ public class ChatBotControl
 	 * @version 1.1 9/26/2014
 	 * @author Brennan Litster
 	 */
-	//private void quit()
-	//{
-		//appView.showChatBoxBot(cleanMess);
-		//System.exit(0);
-	//}
+	private void quit()
+	{
+		appView.showChatBoxBot(cleanMess);
+	}
 }
