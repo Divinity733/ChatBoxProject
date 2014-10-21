@@ -1,11 +1,9 @@
 package chatbot.view;
 
 import java.awt.Color;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 import chatbot.controller.ChatBotControl;
 
@@ -16,6 +14,8 @@ public class ChatboxPanel extends JPanel
 	private JButton firstButt;
 	private JTextField firstText;
 	private SpringLayout baseLayout;
+	private JTextArea chatArea;
+	private JScrollPane chatScroll;
 	
 	/**
 	 * Makes pop-up.
@@ -31,7 +31,9 @@ public class ChatboxPanel extends JPanel
 		
 		firstButt = new JButton("Click the button... Strike me down!");
 		firstText = new JTextField(25);
-		baseLayout = new SpringLayout();		
+		baseLayout = new SpringLayout();
+		chatArea = new JTextArea(5, 20);
+		chatScroll = new JScrollPane(chatArea);
 		
 		setupPanel();
 		setupLayout();
@@ -53,6 +55,7 @@ public class ChatboxPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.add(firstButt);
 		this.add(firstText);
+		this.add(chatScroll);
 	}
 	
 	/**
@@ -65,14 +68,15 @@ public class ChatboxPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
-		/**
-		 * This was all generated code with Window Builder.
-		 */
-		baseLayout.putConstraint(SpringLayout.EAST, firstText, -10, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 32, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 38, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, 126, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, chatArea, 338, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, firstText, 359, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, firstText, 111, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, firstText, -10, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, firstText, -88, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, firstButt, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, firstText, 10, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, firstText, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, firstText, 105, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, firstButt, -117, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, firstButt, -54, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, firstButt, 237, SpringLayout.WEST, this);
@@ -80,6 +84,12 @@ public class ChatboxPanel extends JPanel
 	
 	private void heyListen()
 	{
-		
+		firstButt.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstText.setText(firstText.getText()+ " :) ");
+			}
+		});
 	}
 }
