@@ -17,6 +17,14 @@ public class ChatboxPanel extends JPanel
 	private JTextField firstText;
 	private SpringLayout baseLayout;
 	
+	/**
+	 * Makes pop-up.
+	 * 
+	 * @param ChatboxPanel()
+	 *            is used to create the pop-up.
+	 * @version 1.0 10/21/2014
+	 * @author Brennan Litster
+	 */
 	public ChatboxPanel(ChatBotControl baseController)
 	{
 		this.baseController = baseController;
@@ -30,6 +38,14 @@ public class ChatboxPanel extends JPanel
 		heyListen();
 	}
 	
+	/**
+	 * The looks of the pop-up.
+	 * 
+	 * @param setupPanel()
+	 *            is used to create the look of the pop-up.
+	 * @version 1.0 10/21/2014
+	 * @author Brennan Litster
+	 */
 	private void setupPanel()
 	{
 		this.setBackground(Color.black);
@@ -39,8 +55,19 @@ public class ChatboxPanel extends JPanel
 		this.add(firstText);
 	}
 	
+	/**
+	 * The placement of the pop-up.
+	 * 
+	 * @param setupLayout()
+	 *            is used to dictate where things need to go.
+	 * @version 1.0 10/21/2014
+	 * @author Brennan Litster
+	 */
 	private void setupLayout()
 	{
+		/**
+		 * This was all generated code with Window Builder.
+		 */
 		baseLayout.putConstraint(SpringLayout.EAST, firstText, -10, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, firstButt, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, firstText, 10, SpringLayout.NORTH, this);
