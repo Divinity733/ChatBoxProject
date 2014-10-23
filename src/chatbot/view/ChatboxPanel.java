@@ -12,7 +12,6 @@ public class ChatboxPanel extends JPanel
 	private ChatBotControl baseController;
 	
 	private JButton firstButt;
-	private JTextField firstText;
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	private JScrollPane chatScroll;
@@ -30,14 +29,28 @@ public class ChatboxPanel extends JPanel
 		this.baseController = baseController;
 		
 		firstButt = new JButton("Click the button... Strike me down!");
-		firstText = new JTextField(25);
 		baseLayout = new SpringLayout();
 		chatArea = new JTextArea(5, 20);
 		chatScroll = new JScrollPane(chatArea);
 		
+		setPane();
 		setupPanel();
 		setupLayout();
 		heyListen();
+	}
+	
+	/**
+	 * The looks of the pop-up.
+	 * 
+	 * @param setPane()
+	 *            is used to help give restrictions on the chat field.
+	 * @version 1.1 10/23/2014
+	 * @author Brennan Litster
+	 */
+	private void setPane()
+	{
+		chatArea.setLineWrap(true);
+		chatArea.setWrapStyleWord(true);
 	}
 	
 	/**
@@ -54,7 +67,6 @@ public class ChatboxPanel extends JPanel
 		this.setSize(400, 400);
 		this.setLayout(baseLayout);
 		this.add(firstButt);
-		this.add(firstText);
 		this.add(chatScroll);
 	}
 	
@@ -72,23 +84,27 @@ public class ChatboxPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 38, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, 126, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, chatArea, 338, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, firstText, 359, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, firstText, 111, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, firstText, -10, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, firstText, -88, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, firstButt, 10, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, firstButt, -117, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, firstButt, -54, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, firstButt, 237, SpringLayout.WEST, this);
 	}
 	
+	/**
+	 * The looks of the pop-up.
+	 * 
+	 * @param heyListen()
+	 *            is used to give a task to the computer using a button.
+	 * @version 1.0 10/21/2014
+	 * @author Brennan Litster
+	 */
 	private void heyListen()
 	{
 		firstButt.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstText.setText(firstText.getText()+ " :) ");
+				chatArea.setText(chatArea.getText()+ " :) ");
 			}
 		});
 	}
