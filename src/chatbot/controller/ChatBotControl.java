@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import chatbot.model.ChatBotBox;
 import chatbot.view.ChatbotFrame;
+import chatbot.view.ChatboxPanel;
 import chatbot.view.ChatboxView;
 
 /**
@@ -60,22 +61,22 @@ public class ChatBotControl
 	 */
 	public void start()
 	{
-		String result = appView.showChatBotBox(startMess);
+		((ChatboxPanel) appFrame.getContentPane()).doesStuff(startMess);
 		
-		/**
-		 * Allows Chat to appear.
-		 * 
-		 * @param if --> while changed so we can mess with checkers.
-		 * @version 1.2 9/26/2014
-		 * @author Brennan Litster
-		 */
-		while (!mySillyChatBotBox.quitChecker(result))
+		//ChatboxPanel testPanel = (ChatboxPanel) appFrame.getContentPane();
+	}
+	
+	public String getChatBoxBot(String input)
+	{
+		String result = "";
+		
+		if(mySillyChatBotBox.quitChecker(input))
 		{
-			result = mySillyChatBotBox.processText(result);
-			result = appView.showChatBotBox(result);
+			quit();
 		}
-		
-		quit();
+		result = mySillyChatBotBox.processText(input);
+
+		return result;
 	}
 	
 	/**
@@ -89,5 +90,6 @@ public class ChatBotControl
 	private void quit()
 	{
 		appView.showChatBoxBot(cleanMess);
+		System.exit(0);
 	}
 }

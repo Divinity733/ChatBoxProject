@@ -16,6 +16,7 @@ public class ChatboxPanel extends JPanel
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	private JScrollPane chatScroll;
+	private JTextArea textArea;
 	
 	/**
 	 * Makes pop-up.
@@ -31,7 +32,8 @@ public class ChatboxPanel extends JPanel
 		
 		firstButt = new JButton("Click the button... Strike me down!");
 		baseLayout = new SpringLayout();
-		chatArea = new JTextArea(5, 20);
+		textArea = new JTextArea(1, 20);
+		chatArea = new JTextArea(10, 45);
 		chatScroll = new JScrollPane(chatArea);
 		
 		setPane();
@@ -50,8 +52,11 @@ public class ChatboxPanel extends JPanel
 	 */
 	private void setPane()
 	{
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
+		chatArea.setBackground(Color.ORANGE);
 	}
 	
 	/**
@@ -68,6 +73,7 @@ public class ChatboxPanel extends JPanel
 		this.setSize(400, 400);
 		this.setLayout(baseLayout);
 		this.add(firstButt);
+		this.add(textArea);
 		this.add(chatScroll);
 	}
 	
@@ -89,6 +95,8 @@ public class ChatboxPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, firstButt, -117, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, firstButt, -54, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, firstButt, 237, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, textArea, 0, SpringLayout.WEST, firstButt);
+		baseLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, firstButt);
 	}
 	
 	/**
@@ -105,8 +113,17 @@ public class ChatboxPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				chatArea.setText(chatArea.getText()+ " :) ");
+				String currentInput = textArea.getText();
+				String result = baseController.getChatBoxBot(currentInput);
+				doesStuff(currentInput);
+				doesStuff(result);
+				textArea.setText("");
 			}
 		});
+	}
+	
+	public void doesStuff(String userInput)
+	{
+		chatArea.append("\n" + userInput);
 	}
 }
