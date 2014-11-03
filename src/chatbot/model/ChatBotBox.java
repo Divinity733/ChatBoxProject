@@ -114,7 +114,8 @@ public class ChatBotBox
 		
 		if(getChatCounter() < 7)
 		{
-			
+			//Ask about Data Members
+			//need ifs
 		}
 		
 		int randomPosition = (int) (Math.random() * 4);
