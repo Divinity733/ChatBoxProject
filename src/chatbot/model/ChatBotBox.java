@@ -6,6 +6,7 @@ public class ChatBotBox
 {
 	private ArrayList<String> memeList;
 	private String name;
+	private ChatboxUser myUser;
 	private int chatCounter;
 	
 	/**
@@ -21,6 +22,7 @@ public class ChatBotBox
 		memeList = new ArrayList<String>();
 		this.name = name;
 		chatCounter = 0;
+		myUser = new ChatboxUser();
 		fillTheMeme();
 	}
 	
@@ -48,6 +50,32 @@ public class ChatBotBox
 	public int getChatCounter()
 	{
 		return chatCounter;
+	}
+	
+	/**
+	 * Get's the User.java file
+	 * 
+	 * @param myUser
+	 *            is returned.
+	 * @version 1.4 11/3/2014
+	 * @author Brennan Litster
+	 */
+	public ChatboxUser getMyUser()
+	{
+		return myUser;
+	}
+
+	/**
+	 * Tells the computer know what myUser is.
+	 * 
+	 * @param myUser
+	 *            is defined.
+	 * @version 1.4 11/3/2014
+	 * @author Brennan Litster
+	 */
+	public void setMyUser(ChatboxUser myUser)
+	{
+		this.myUser = myUser;
 	}
 	
 	/**
