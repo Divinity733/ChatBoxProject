@@ -112,7 +112,12 @@ public class ChatBotBox
 	{
 		String result = "";
 		
-		int randomPosition = (int) (Math.random() * 3);
+		if(getChatCounter() < 7)
+		{
+			
+		}
+		
+		int randomPosition = (int) (Math.random() * 4);
 		if (currentInput != null)
 		{
 			if (randomPosition == 0)
@@ -138,7 +143,7 @@ public class ChatBotBox
 					result = "Error404...";
 				}
 			}
-			else
+			else if (randomPosition == 2)
 			{
 				if (memeCheck(currentInput))
 				{
@@ -149,12 +154,16 @@ public class ChatBotBox
 					result = "not a meme, try later!";
 				}
 			}
+			else
+			{
+				//Talk about the user ;)
+			}
 		}
 		else
 		{
 			result = "use real words!!!!";
 		}
-		
+		updateChatCounter();
 		return result;
 	}
 	
