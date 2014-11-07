@@ -100,7 +100,7 @@ public class ChatboxPanel extends JPanel
 	}
 	
 	/**
-	 * The looks of the pop-up.
+	 * The task is defined for the button.
 	 * 
 	 * @param heyListen()
 	 *            is used to give a task to the computer using a button.
@@ -122,6 +122,14 @@ public class ChatboxPanel extends JPanel
 		});
 	}
 	
+	/**
+	 * The input now goes into the Chatbot
+	 * 
+	 * @param doesStuff()
+	 *            is used to make the panel pop-up be the input for Chatbot.
+	 * @version 1.1 11/7/2014
+	 * @author Brennan Litster
+	 */
 	public void doesStuff(String userInput)
 	{
 		chatArea.append("\n" + userInput);
