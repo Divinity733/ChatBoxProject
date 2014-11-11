@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ChatBotBox
 {
 	private ArrayList<String> memeList;
+	private ArrayList<String> userInputList;
 	private String name;
 	private ChatboxUser myUser;
 	private int chatCounter;
@@ -118,7 +119,7 @@ public class ChatBotBox
 			//need ifs
 		}
 		
-		int randomPosition = (int) (Math.random() * 4);
+		int randomPosition = (int) (Math.random() * 6);
 		if (currentInput != null)
 		{
 			if (randomPosition == 0)
@@ -155,9 +156,26 @@ public class ChatBotBox
 					result = "not a meme, try later!";
 				}
 			}
-			else
+			else if (randomPosition == 3)
 			{
 				//Talk about the user ;)
+			}
+			else if (randomPosition == 4)
+			{
+				//add to our list
+				userInputList.add(currentInput);
+				result = "Thank you for the comment.";
+			}
+			else
+			{
+				if(userInputCheck(currentInput))
+				{
+					
+				}
+				else
+				{
+					
+				}
 			}
 		}
 		else
@@ -166,6 +184,23 @@ public class ChatBotBox
 		}
 		updateChatCounter();
 		return result;
+	}
+	
+	private boolean userInputCheck(String userInput)
+	{
+		boolean matchesInput = false;
+		
+		for(int loopCount = 0; loopCount < userInputList.size(); loopCount++)
+		{
+			if(userInput.equalsIgnoreCase(userInputList.get(loopCount)))
+			{
+				matchesInput = true;
+				userInputList.remove(loopCount);
+				loopCount--;
+			}
+		}
+		
+		return matchesInput;
 	}
 	
 	/**
