@@ -113,14 +113,69 @@ public class ChatBotBox
 	{
 		String result = "";
 		
-		if(getChatCounter() < 7)
+		if(getChatCounter() < 5)
 		{
 			//Ask about Data Members
 			//need ifs
+			if(getChatCounter() == 0)
+			{
+				myUser.setUserName(currentInput);
+				result = "Great name, " + myUser.getUserName() + ", you are amazing.";
+			}
+			else if(getChatCounter() == 1)
+			{
+				int userAge = Integer.parseInt(currentInput);
+				myUser.setAge(userAge);
+			}
+			else if(getChatCounter() == 2)
+			{
+				if(currentInput.equalsIgnoreCase("yes"))
+				{
+					myUser.setHasGlasses(true);
+					result = "Really?  I didn't know that!";
+					
+					if(getChatCounter() == 3)
+					{
+						if(currentInput.equalsIgnoreCase("yes"))
+						{
+
+							myUser.setAGamer(true);
+							result = "That's awesome!";
+						}
+						else if(currentInput.equalsIgnoreCase("no"))
+						{
+
+							myUser.setAGamer(false);
+							result = "They're insane!";
+						}
+					}
+				}
+				else if(currentInput.equalsIgnoreCase("no"))
+				{
+					myUser.setHasGlasses(false);
+					
+					
+					if(getChatCounter() == 3)
+					{
+						if(currentInput.equalsIgnoreCase("yes"))
+						{
+
+							myUser.setAGamer(true);
+							result = "That's crazy!";
+						}
+						else if(currentInput.equalsIgnoreCase("no"))
+						{
+
+							myUser.setAGamer(false);
+							result = "LAME!";
+						}
+					}
+				}
+			}
 		}
 		
 		int randomPosition = (int) (Math.random() * 6);
-		if (currentInput != null)
+		if (currentInput != null && currentInput.length() > 0)
 		{
 			if (randomPosition == 0)
 			{
