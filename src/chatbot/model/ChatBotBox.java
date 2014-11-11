@@ -115,8 +115,6 @@ public class ChatBotBox
 		
 		if(getChatCounter() < 5)
 		{
-			//Ask about Data Members
-			//need ifs
 			if(getChatCounter() == 0)
 			{
 				myUser.setUserName(currentInput);
