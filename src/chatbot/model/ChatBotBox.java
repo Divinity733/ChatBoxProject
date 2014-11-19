@@ -115,98 +115,122 @@ public class ChatBotBox
 		
 		if(getChatCounter() < 5)
 		{
-			if(getChatCounter() == 0)
+			result = introUser(currentInput);
+		}
+		
+		else if(getChatCounter() == 0)
+		{
+			result = randomKhan(currentInput);
+		}
+		
+		else
+		{
+			result = "use real words!!!!";
+			chatCounter--;
+		}
+		
+		updateChatCounter();
+		return result;
+	}
+	
+	private String introUser(String input)
+	{
+		String userQuest = "";
+		
+		if(getChatCounter() == 0)
+		{
+			myUser.setUserName(input);
+			userQuest = "Great name, " + myUser.getUserName() + ", you are amazing.";
+		}
+		else if(getChatCounter() == 1)
+		{
+			int userAge = Integer.parseInt(input);
+			myUser.setAge(userAge);
+		}
+		else if(getChatCounter() == 2)
+		{
+			if(input.equalsIgnoreCase("yes"))
 			{
-				myUser.setUserName(currentInput);
-				result = "Great name, " + myUser.getUserName() + ", you are amazing.";
-			}
-			else if(getChatCounter() == 1)
-			{
-				int userAge = Integer.parseInt(currentInput);
-				myUser.setAge(userAge);
-			}
-			else if(getChatCounter() == 2)
-			{
-				if(currentInput.equalsIgnoreCase("yes"))
+				myUser.setHasGlasses(true);
+				userQuest = "Really?  I didn't know that!";
+				
+				if(getChatCounter() == 3)
 				{
-					myUser.setHasGlasses(true);
-					result = "Really?  I didn't know that!";
-					
-					if(getChatCounter() == 3)
+					if(input.equalsIgnoreCase("yes"))
 					{
-						if(currentInput.equalsIgnoreCase("yes"))
-						{
-
-							myUser.setAGamer(true);
-							result = "That's awesome!";
-						}
-						else if(currentInput.equalsIgnoreCase("no"))
-						{
-
-							myUser.setAGamer(false);
-							result = "They're insane!";
-						}
+						myUser.setAGamer(true);
+						userQuest = "That's awesome!";
+					}
+					else if(input.equalsIgnoreCase("no"))
+					{
+						myUser.setAGamer(false);
+						userQuest = "They're insane!";
 					}
 				}
-				else if(currentInput.equalsIgnoreCase("no"))
+			}
+			else if(input.equalsIgnoreCase("no"))
+			{
+				myUser.setHasGlasses(false);
+				userQuest = "Wow!  Didn't know they didn't wear them.";
+				
+				if(getChatCounter() == 3)
 				{
-					myUser.setHasGlasses(false);
-					
-					
-					if(getChatCounter() == 3)
+					if(input.equalsIgnoreCase("yes"))
 					{
-						if(currentInput.equalsIgnoreCase("yes"))
-						{
-
-							myUser.setAGamer(true);
-							result = "That's crazy!";
-						}
-						else if(currentInput.equalsIgnoreCase("no"))
-						{
-
-							myUser.setAGamer(false);
-							result = "LAME!";
-						}
+						myUser.setAGamer(true);
+						userQuest = "That's crazy!";
+					}
+					else if(input.equalsIgnoreCase("no"))
+					{
+						myUser.setAGamer(false);
+						userQuest = "LAME!";
 					}
 				}
 			}
 		}
 		
+		return userQuest;
+	}
+	
+	private String randomKhan(String input)
+	{
+		String Khan = "";
+		
 		int randomPosition = (int) (Math.random() * 6);
-		if (currentInput != null && currentInput.length() > 0)
+		if (input != null && input.length() > 0)
 		{
 			if (randomPosition == 0)
 			{
-				if (stringLengthChecker(currentInput))
+				if (stringLengthChecker(input))
 				{
-					result = "too long";
+					Khan = "too long";
 				}
 				else
 				{
-					memeList.add(currentInput);
-					result = "shorty!";
+					memeList.add(input);
+					Khan = "shorty!";
 				}
 			}
 			else if (randomPosition == 1)
 			{
-				if (contentChecker(currentInput))
+				if (contentChecker(input))
 				{
-					result = "Found it!";
+					Khan = "Found it!";
 				}
 				else
 				{
-					result = "Error404...";
+					Khan = "Error404...";
 				}
 			}
 			else if (randomPosition == 2)
 			{
-				if (memeCheck(currentInput))
+				if (memeCheck(input))
 				{
-					result = "Wow, " + currentInput + " is a meme. Yay!";
+					Khan = "Wow, " + input + " is a meme. Yay!";
 				}
 				else
 				{
-					result = "not a meme, try later!";
+					Khan = "not a meme, try later!";
 				}
 			}
 			else if (randomPosition == 3)
@@ -216,27 +240,29 @@ public class ChatBotBox
 			else if (randomPosition == 4)
 			{
 				//add to our list
-				userInputList.add(currentInput);
-				result = "Thank you for the comment.";
+				userInputList.add(input);
+				Khan = "Thank you for the comment.";
 			}
 			else
 			{
-				if(userInputCheck(currentInput))
+				if(userInputCheck(input))
 				{
-					
+						
 				}
 				else
 				{
-					
+						
 				}
 			}
 		}
 		else
 		{
-			result = "use real words!!!!";
+			Khan = "use real words!!!!";
 		}
-		updateChatCounter();
-		return result;
+		updateChatCounter();	
+		
+		return Khan;
+		
 	}
 	
 	private boolean userInputCheck(String userInput)
