@@ -243,15 +243,26 @@ public class ChatBotBox
 				userInputList.add(input);
 				Khan = "Thank you for the comment.";
 			}
+			else if (randomPosition == 5)
+			{
+				if(mashChecker(input))
+				{
+					Khan = mashingDetective(input);
+				}
+				else
+				{
+					Khan = notMashingDetective(input);
+				}
+			}
 			else
 			{
 				if(userInputCheck(input))
 				{
-						
+					Khan = "That's nice";
 				}
 				else
 				{
-						
+					Khan = "Boo!";
 				}
 			}
 		}
@@ -265,6 +276,41 @@ public class ChatBotBox
 		
 	}
 	
+	private String mashingDetective(String input)
+	{
+		String mashedPotatoes = "";
+		
+		mashedPotatoes = input.substring(input.length()/2);
+		mashedPotatoes += input.substring(input.length()/2);
+		mashedPotatoes += input.substring(input.length()/2);
+		mashedPotatoes += input.substring(input.length()/2);
+		mashedPotatoes += input.substring(input.length()/2);
+		
+		return mashedPotatoes;
+	}
+	
+	private String notMashingDetective(String input)
+	{
+		String notMashed = "Thanks for sparing your keyboard!  :)";
+		if (input.length() > 1)
+		{
+			notMashed += input.substring(input.length()/3, input.length()/2);
+		}
+		return notMashed;
+	}
+	
+	private boolean mashChecker(String input)
+	{
+		boolean isMashing = false;
+		
+		if(input.indexOf("sdf") > -1)
+		{
+			isMashing = true;
+		}
+		
+		return isMashing;
+	}
+
 	private boolean userInputCheck(String userInput)
 	{
 		boolean matchesInput = false;
