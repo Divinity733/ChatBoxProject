@@ -13,6 +13,8 @@ public class ChatboxPanel extends JPanel
 	private ChatBotControl baseController;
 	
 	private JButton firstButt;
+	private JButton saveButt;
+	private JButton loadButt;
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	private JScrollPane chatScroll;
@@ -31,6 +33,8 @@ public class ChatboxPanel extends JPanel
 		this.baseController = baseController;
 		
 		firstButt = new JButton("Click the button... Strike me down!");
+		saveButt = new JButton("Click the button... Save!");
+		loadButt = new JButton("Click the button... Load!");
 		baseLayout = new SpringLayout();
 		textArea = new JTextArea(1, 20);
 		chatArea = new JTextArea(10, 45);
@@ -75,6 +79,8 @@ public class ChatboxPanel extends JPanel
 		this.add(firstButt);
 		this.add(textArea);
 		this.add(chatScroll);
+		this.add(saveButt);
+		this.add(loadButt);
 	}
 	
 	/**
@@ -97,6 +103,10 @@ public class ChatboxPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, firstButt, 237, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, textArea, 0, SpringLayout.WEST, firstButt);
 		baseLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, firstButt);
+		baseLayout.putConstraint(SpringLayout.SOUTH, loadButt, 0, SpringLayout.SOUTH, saveButt);
+		baseLayout.putConstraint(SpringLayout.EAST, loadButt, -6, SpringLayout.WEST, saveButt);
+		baseLayout.putConstraint(SpringLayout.SOUTH, saveButt, -10, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, saveButt, -10, SpringLayout.EAST, this);
 	}
 	
 	/**
@@ -118,6 +128,31 @@ public class ChatboxPanel extends JPanel
 				doesStuff(currentInput);
 				doesStuff(result);
 				textArea.setText("");
+			}
+		});
+		
+		saveButt.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String chat = textArea.getText();
+				baseController.saveText(chat, true);
+			}
+		});
+		
+		loadButt.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String savedChat = baseController.readTextFromFile();
+				if(savedChat.length()<1)
+				{
+					chatArea.setText("No text in file");
+				}
+				else
+				{
+					chatArea.setText(savedChat);
+				}
 			}
 		});
 	}
