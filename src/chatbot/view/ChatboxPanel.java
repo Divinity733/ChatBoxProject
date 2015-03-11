@@ -23,8 +23,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * Makes pop-up.
 	 * 
-	 * @param ChatboxPanel
-	 *            () is used to create the pop-up.
+	 * @param ChatboxPanel()
+	 *            is used to create the pop-up.
 	 * @version 1.0 10/21/2014
 	 * @author Brennan Litster
 	 */
@@ -49,8 +49,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * The looks of the pop-up.
 	 * 
-	 * @param setPane
-	 *            () is used to help give restrictions on the chat field.
+	 * @param setPane()
+	 *            is used to help give restrictions on the chat field.
 	 * @version 1.1 10/23/2014
 	 * @author Brennan Litster
 	 */
@@ -66,8 +66,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * The looks of the pop-up.
 	 * 
-	 * @param setupPanel
-	 *            () is used to create the look of the pop-up.
+	 * @param setupPanel()
+	 *            is used to create the look of the pop-up.
 	 * @version 1.0 10/21/2014
 	 * @author Brennan Litster
 	 */
@@ -86,8 +86,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * The placement of the pop-up.
 	 * 
-	 * @param setupLayout
-	 *            () is used to dictate where things need to go.
+	 * @param setupLayout()
+	 *            is used to dictate where things need to go.
 	 * @version 1.0 10/21/2014
 	 * @author Brennan Litster
 	 */
@@ -112,8 +112,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * The task is defined for the button.
 	 * 
-	 * @param heyListen
-	 *            () is used to give a task to the computer using a button.
+	 * @param heyListen()
+	 *            is used to give a task to the computer using a button.
 	 * @version 1.0 10/21/2014
 	 * @author Brennan Litster
 	 */
@@ -145,7 +145,7 @@ public class ChatboxPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				String savedChat = baseController.readTextFromFile();
-				if (savedChat.length() < 1)
+				if(savedChat.length()<1)
 				{
 					chatArea.setText("No text in file");
 				}
@@ -160,8 +160,8 @@ public class ChatboxPanel extends JPanel
 	/**
 	 * The input now goes into the Chatbot
 	 * 
-	 * @param doesStuff
-	 *            () is used to make the panel pop-up be the input for Chatbot.
+	 * @param doesStuff()
+	 *            is used to make the panel pop-up be the input for Chatbot.
 	 * @version 1.1 11/7/2014
 	 * @author Brennan Litster
 	 */
